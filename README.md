@@ -45,8 +45,8 @@ pip install opencv-python numpy pillow
 
 
 
-1. **Launch the App:** Run the Python script (`python app.py`).
-2. **Load an Image:** Click "Load Image" and select the graph you wish to digitize (supports PNG, JPG, BMP).
+1. **Launch the App:** Run the Python script (`python imgToPoints.py`).
+2. **Load an Image:** Click "Load Image" and select the graph you wish to digitize (supports PNG, JPG, BMP). This may take a few moments to load.
 3. **Configure Axes:** * The app will attempt to automatically find the graph's bounding box (indicated by a green dashed box).
 * If the automatic detection is slightly off, click "Set X Min", "Set Y Max", etc., and click on the image to manually correct the pixel locations of the axes.
 * Enter the actual numerical values for your X and Y minimums and maximums in the text boxes.

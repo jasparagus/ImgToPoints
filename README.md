@@ -27,13 +27,23 @@ This application requires Python 3.x and the following libraries:
 * `tkinter` - Standard Python GUI library (usually included with Python installations).
 
 **Installation:**
-You can install the required external dependencies using pip:
-```bash
-pip install opencv-python numpy pillow
+Clone the repository and install the required external dependencies using pip:
 
-```
+    ```bash
+    git clone https://github.com/jasparagus/ImgToPoints.git
+    python -m pip install -r requirements.txt
+    ```
+
+Or 
+
+    ```
+    pip install opencv-python numpy pillow
+    ```
+
 
 ## How to Use
+
+
 
 1. **Launch the App:** Run the Python script (`python app.py`).
 2. **Load an Image:** Click "Load Image" and select the graph you wish to digitize (supports PNG, JPG, BMP).

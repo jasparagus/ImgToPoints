@@ -7,7 +7,8 @@ import csv
 import math
 
 # ==========================================
-# GraphMaster Axis Detection Logic
+# GraphMaster Axis Detection Logic 
+# See also https://github.com/MasterAI-EAM/GraphMaster
 # ==========================================
 def findMaxConsecutiveOnes(nums):
     count = maxCount = 0

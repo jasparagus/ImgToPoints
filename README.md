@@ -1,6 +1,7 @@
-# Local Graph Digitizer
+# About
+**ImgToPoints**: A simple, local tool to digitize images into points
 
-A lightweight, local-only Python desktop application designed to quickly and easily convert image files of graphical data (such as those found in scientific publications, reports, or historical documents) into usable CSV data for analysis. 
+ImgToPoints is a lightweight, local-only Python desktop application designed to quickly and easily convert raster (pixel-based) image files of graphical data (such as those found in scientific publications, reports, or historical documents) into usable CSV data for analysis. See also https://github.com/MasterAI-EAM/GraphMaster for the logic used to (attempting to) get the x/y min/max automatically. Built with assistance from Gemini.
 
 ## Purpose
 Extracting raw data points from published charts is a common necessity in research and engineering. The goal of this tool is to provide a fast, user-friendly, and stable way to "digitize" these graphs. By running entirely locally on your machine, it ensures your sensitive or proprietary data remains private, while avoiding the instability and latency of cloud-based APIs. 

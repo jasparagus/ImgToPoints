@@ -29,16 +29,16 @@ This application requires Python 3.x and the following libraries:
 **Installation:**
 Clone the repository and install the required external dependencies using pip:
 
-    ```bash
-    git clone https://github.com/jasparagus/ImgToPoints.git
-    python -m pip install -r requirements.txt
-    ```
+```
+git clone https://github.com/jasparagus/ImgToPoints.git
+python -m pip install -r requirements.txt
+```
 
-Or 
+Or:
 
-    ```
-    pip install opencv-python numpy pillow
-    ```
+```
+pip install opencv-python numpy pillow
+```
 
 
 ## How to Use

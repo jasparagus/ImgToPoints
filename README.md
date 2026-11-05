@@ -19,33 +19,30 @@ It strikes a balance between automation and manual control by using pixel-logic 
 
 ## Requirements
 
-This application requires Python 3.x and the following libraries:
+This application requires Python 3.11+ and the following libraries:
 
 * `opencv-python` (cv2) - For image processing and automated axis detection.
 * `numpy` - For mathematical operations during image processing.
 * `Pillow` (PIL) - For handling and scaling images within the Tkinter GUI.
-* `tkinter` - Standard Python GUI library (usually included with Python installations).
+* `tkinter` - Standard Python GUI library (on Linux distributions like Debian/Ubuntu, install via `sudo apt install python3-tk`).
 
-**Installation:**
+**Running with UV (Recommended):**
+
+```bash
+uv run imgToPoints.py
+```
+
+**Alternative Installation (pip):**
 Clone the repository and install the required external dependencies using pip:
 
-```
+```bash
 git clone https://github.com/jasparagus/ImgToPoints.git
 python -m pip install -r requirements.txt
 ```
 
-Or:
-
-```
-pip install opencv-python numpy pillow
-```
-
-
 ## How to Use
 
-
-
-1. **Launch the App:** Run the Python script (`python imgToPoints.py`).
+1. **Launch the App:** Run the application via `uv run imgToPoints.py` or `python imgToPoints.py`.
 2. **Load an Image:** Click "Load Image" and select the graph you wish to digitize (supports PNG, JPG, BMP). This may take a few moments to load.
 3. **Configure Axes:** * The app will attempt to automatically find the graph's bounding box (indicated by a green dashed box).
 * If the automatic detection is slightly off, click "Set X Min", "Set Y Max", etc., and click on the image to manually correct the pixel locations of the axes.

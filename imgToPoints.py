@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import cv2
@@ -31,7 +32,7 @@ def detectAxes(image_cv, threshold=10):
         if abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
             maxindex = start_idx
             start_idx += 1
-            while abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
+            while start_idx < width and abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
                 maxindex = start_idx
                 start_idx += 1
             break
@@ -44,7 +45,7 @@ def detectAxes(image_cv, threshold=10):
         if abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
             y_right_index = start_idx
             start_idx -= 1
-            while abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
+            while start_idx >= 0 and abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
                 y_right_index = start_idx
                 start_idx -= 1
             break
@@ -58,7 +59,7 @@ def detectAxes(image_cv, threshold=10):
         if abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
             maxindex = start_idx
             start_idx -= 1
-            while abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
+            while start_idx >= 0 and abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
                 maxindex = start_idx
                 start_idx -= 1
             break
@@ -71,7 +72,7 @@ def detectAxes(image_cv, threshold=10):
         if abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
             x_up_index = start_idx
             start_idx += 1
-            while abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
+            while start_idx < height and abs(maxConsecutiveOnes[start_idx] - maxcount) <= threshold:
                 x_up_index = start_idx
                 start_idx += 1
             break
@@ -215,13 +216,21 @@ class GraphDigitizerApp:
         self.status_lbl.config(text=f"Status: {modes_text.get(mode, mode)}")
 
     def load_image(self):
-        filepath = filedialog.askopenfilename(filetypes=[("Image Files", "*.png;*.jpg;*.jpeg;*.bmp")])
+        filepath = filedialog.askopenfilename(
+            filetypes=[
+                ("Image Files", ("*.png", "*.jpg", "*.jpeg", "*.bmp", "*.PNG", "*.JPG", "*.JPEG", "*.BMP")),
+                ("All Files", "*.*"),
+            ]
+        )
         if not filepath:
             return
 
         # Load with OpenCV for GraphMaster axis detection logic
         self.cv_image = cv2.imread(filepath)
-        
+        if self.cv_image is None:
+            messagebox.showerror("Error", f"Failed to load image:\n{filepath}\nPlease verify the file exists and is a valid image format.")
+            return
+
         try:
             xaxis, yaxis, x_up_axis, y_right_axis = detectAxes(self.cv_image)
             self.px_xmin = yaxis[0]
@@ -405,12 +414,15 @@ class GraphDigitizerApp:
             messagebox.showwarning("Warning", "No data points to export!")
             return
             
-        filepath = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSV files", "*.csv")])
+        filepath = filedialog.asksaveasfilename(
+            defaultextension=".csv",
+            filetypes=[("CSV files", ("*.csv", "*.CSV")), ("All Files", "*.*")]
+        )
         if not filepath:
             return
             
         try:
-            with open(filepath, 'w', newline='') as f:
+            with open(filepath, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)
                 writer.writerow(["x", "y"])
                 for item in items:
